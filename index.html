@@ -41,11 +41,25 @@
       place-items: center;
       display: grid;
     }
+    text {
+      color: #5e0259;
+      background-color: #0e5f7460;
+      place-items: center;
+      display: grid;
+      padding: 20px;
+      margin: 20px;
+      justify-content: center;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      place-items: center;
+      display: grid;
+    }
+
   </style>
 </head>
 <body>
   <header>
-    <h1>Команда Wex - Разработка open source </h1>
   </header>
   <main>
     <section class="team-members">
@@ -62,6 +76,27 @@
         <p><a href="https://t.me/thekillersec" class="social-link">Телеграмм</a></p>
       </article>
     </section>
+    <link rel="stylesheet" href="styles.css">
+    <section id="hero">
+      <h2>Мы - команда Wex, состоящая из  разработчиков, которые разделяют общую цель - создавать надежные open source решения.</h2>
+  </section>
+  <section id="about">
+      <h3>О нас</h3>
+      <p1>Мы - команда Wex, состоящая из разработчиков, которые разделяют общую цель - создавать надежные open source решения. Мы верим в силу открытого исходного кода для развития технологий и улучшения жизни людей.</p1>
+  </section>
+  <section class="projects">
+      <h3>Наши проекты</h3>
+      <article id="wexium-linux">
+          <h4>Wexium Linux</h4>
+          <p>это open source дистрибутив, основанный на Linux. Он предназначен для использования на настольных компьютерах. Wexium Linux предлагает широкий спектр функций и возможностей, включая поддержку различных графических оболочек и программного обеспечения.</p>
+          <a href="https://wexium.vercel.app/">Сайт</a>
+      </article>
+      <article id="wexium-arm">
+          <h4>Wexium ARM</h4>
+          <p>это версия Wexium Linux, оптимизированная для работы на устройствах на базе процессоров ARM. Она предназначена для использования на мобильных устройствах.</p>
+      </article>
+  </section>
+</main>
   </main>
   <footer>
     <p>&copy; 2024 Wex</p>
