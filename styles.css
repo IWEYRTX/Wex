@@ -2,7 +2,7 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-color: #000000;
 }
 
 
@@ -27,6 +27,7 @@ h3 {
     padding: 20px;
     margin: 20px;
     justify-content: center;
+    color: #fff;
 }
 
 p1 {
@@ -42,7 +43,7 @@ p1 {
 }
 
 .projects {
-    color: #241627;
+    color: #86cadb;
     background-color: #5b237585;
     place-items: center;
     display: grid;
