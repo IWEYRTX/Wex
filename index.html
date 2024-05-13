@@ -4,11 +4,87 @@
  
   <title>Wex</title>
   <style>
+    @font-face {
+        font-family: 'Monocraft';
+        src: url('assest/Monocraft.ttf') format('truetype');
+       }
+      
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Monocraft', monospace;
       place-items: center;
       background-color: #000000;
     }
+    nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #235b9b54;
+}
+    nav li {
+    display: inline;
+    margin: 0 10px;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    
+}
+
+#hero {
+    background-color: #4b1e8680;
+    color: #fff;
+    padding: 40px;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 40px;
+    border-radius: 5px;
+}
+
+
+h3 {
+    display: grid;
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+    margin: 20px;
+    justify-content: center;
+    color: #fff;
+}
+
+p1 {
+    place-items: center;
+    background-color: #5780ad85;
+    display: grid;
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+    margin: 20px;
+    justify-content: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.projects {
+    color: #86cadb;
+    background-color: #5b237585;
+    place-items: center;
+    display: grid;
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+    margin: 20px;
+    justify-content: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+footer {
+    background-color: #3b2e4b;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
   .team-member {
       background-color: #0e5f7460;
       place-items: center;
@@ -60,21 +136,33 @@
   </style>
 </head>
 <body>
+  <header id="header">
+    <nav>
+      <ul>
+        <li><a href="wexium.html">Wexium</a></li>
+      </ul>
+      </nav>
   <header>
   </header>
   <main>
     <section class="team-members">
       <article class="team-member" id="0">
-        <img src="de0.jpg" alt="">
+        <img src="assest/Photoassest/de0.jpg" alt="">
         <h2>P0ran0ik</h2>
         <p>Owner, dev</p>
         <p><a href="https://t.me/P0ran0ik" class="social-link">Телеграмм</a></p>
       </article>
       <article class="team-member" id="1">
-        <img src="dev1.jpg" alt="">
+        <img src="assest/Photoassest/dev1.jpg" alt="">
         <h2>Pingwin</h2>
         <p>Dev</p>
         <p><a href="https://t.me/thekillersec" class="social-link">Телеграмм</a></p>
+      </article>
+      <article class="team-member" id="2">
+        <img src="assest/Photoassest/photo_2024-04-27_06-44-27.jpg" alt="">
+        <h2>404</h2>
+        <p>Paint on the legs</p>
+        <p><a href="https://t.me/cat_404" class="social-link">Телеграмм</a></p>
       </article>
     </section>
     <link rel="stylesheet" href="styles.css">
@@ -102,6 +190,6 @@
   <footer>
     <p>&copy; 2024 Wex</p>
   </footer>
-  <script src="sk.js"></script>
+  <script src="assest/Photoassest/js/sk.js"></script>
 </body>
 </html>
