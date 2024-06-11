@@ -102,14 +102,6 @@ button:hover {
     background-position: 100% 100%;
 }
 
-#wex-qs img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
 .glow-on-hover {
     width: 220px;
     height: 50px;
