@@ -1,55 +1,86 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wexium - Идеальный Linux-опыт</title>
-    <link rel="stylesheet" href="assest/Photoassest/css/wexium.css">
+    <title>Wexium Linux</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
 </head>
 <body>
     <header>
         <nav>
-            <ul>
-                <li><a href="#features">Функции</a></li>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="#download">Скачать</a></li>
-
+            <div class="logo">Wexium</div>
+            <ul class="nav-links">
+                <li><a href="#home" data-i18n="nav.home">Home</a></li>
+                <li><a href="#features" data-i18n="nav.features">Features</a></li>
+                <li><a href="#download" data-i18n="nav.download">Download</a></li>
+                <li><a href="#about" data-i18n="nav.about">About</a></li>
+                <li><a href="index.html" data-i18n="nav.contact">Contact</a></li>
             </ul>
+            <div class="language-selector">
+                <button id="lang-en">EN</button>
+                <button id="lang-ru">RU</button>
+            </div>
         </nav>
     </header>
-    <main>
-        <section id="hero">
-            <h1>Wexium - Идеальный Linux-опыт</h1>
-            <p>Начните работать с Wexium, дистрибутивом Linux, который поставляется со своими программами для улучшения пользовательского опыта.</p>
-            <button button class="glow-on-hover" type="button" id="animate-btn">Узнать больше</button>
-        </section>
-        <section id="features">
-            <h2>Преимущества</h2>
-            <ul>
-                <li>Простой и удобный интерфейс</li>
-                <li>Выбор оболочек рабочего стола</li>
-                <li>Оптимизированные компоненты системы</li>
 
-            </ul>
-        </section>
-        <section id="wex-qs">
-            <h2>Wex QS - quick start</h2>
-            <p>Wex QS - это программа, которая помогает новым пользователям начать работу с Wexium. Она предоставляет простой и интуитивно понятный способ настройки системы и начала работы.</p>
-            <img src="/assest/Photoassest/screen1.jpg" alt="Скриншот Wex QS">
-            <h2>Wex Tweaks</h2>
-            <p>Wex Tweaks - это программа, которая помогает новым пользователям начать работу с Wexium. Она предоставляет простой и интуитивно понятный способ установки и настройки системы и программ для начала работы.</p>
-            <img src="/assest/Photoassest/screen0.png" alt="">
-        </section>
-        <section id="download">
-            <h2>Скачать Wexium</h2>
-            <p>Получите последнюю версию Wexium и начните испытывать идеальный Linux-опыт.</p>
-            <button class="glow-on-hover" type="button">Скачать сейчас</button>
-        </section>
-    </main>
+    <section id="home" class="hero-section">
+        <div class="hero-content" data-aos="fade-right">
+            <h1 data-i18n="hero.title">Welcome to Wexium Linux</h1>
+            <p data-i18n="hero.description">The ultimate Linux distribution for power users and gamers.</p>
+            <a href="А ссылки нет:(" class="btn-primary" data-i18n="hero.button">Download Now</a>
+        </div>
+        <div class="hero-image" data-aos="fade-left">
+            <img src="/assest/Photoassest/SCREEN0.jpg" alt="Wexium Linux">
+        </div>
+    </section>
+
+    <section id="features" class="team-member">
+        <h2 data-i18n="features.title" data-aos="fade-up">Features</h2>
+        <div class="feature-list">
+            <div class="feature-item" data-aos="zoom-in">
+                <img src="images/feature1.png" alt="Optimized Performance">
+                <h3 data-i18n="features.performance.title">Optimized Performance</h3>
+                <p data-i18n="features.performance.description">Experience a lightning-fast desktop environment optimized for performance.</p>
+            </div>
+            <div class="feature-item" data-aos="zoom-in">
+                <img src="images/feature2.png" alt="Customizable">
+                <h3 data-i18n="features.customizable.title">Customizable</h3>
+                <p data-i18n="features.customizable.description">Highly customizable to meet your individual needs and preferences.</p>
+            </div>
+            <div class="feature-item" data-aos="zoom-in">
+                <img src="images/feature3.png" alt="Gaming Ready">
+                <h3 data-i18n="features.gaming.title">Gaming Ready</h3>
+                <p data-i18n="features.gaming.description">Pre-installed with all the essential tools and optimizations for gamers.</p>
+            </div>
+            <div class="feature-item" data-aos="zoom-in">
+                <img src="/assest/Photoassest/screen0.png" alt="Apps">
+                <h3 data-i18n="features.Apps.title">WexTweaks - Wex QS</h3>
+                <p data-i18n="features.Apps.description">Pre-installed software </p>
+        </div>
+    </section>
+    <section id="about" class="about-section">
+        <h2 data-i18n="about.title" data-aos="fade-up">About Wexium Linux</h2>
+        <p data-i18n="about.description" data-aos="fade-up">
+          Wexium Linux is a powerful, user-friendly Linux distribution designed for both power users and gamers.
+          With its sleek design, lightweight architecture, and extensive customization options, Wexium makes using
+          Linux enjoyable and efficient. Our mission is to provide an exceptional Linux experience that combines
+          stability, performance, and beauty.
+        </p>
+    </section>
+
     <footer>
-        <p>&copy; 2024 Wex </p>
+        <p>&copy; 2024 Wex. All rights reserved.</p>
     </footer>
-    <script src="assest/Photoassest/js/wexium.js"></script>
-    <script src="assest/Photoassest/js/sk.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/21.6.11/i18next.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-browser-languagedetector/6.1.2/i18nextBrowserLanguageDetector.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-i18next/1.2.1/jquery-i18next.min.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>

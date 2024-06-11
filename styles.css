@@ -1,0 +1,246 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 1rem;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: background 0.3s;
+}
+
+.nav-links a:hover {
+    background: #555;
+    border-radius: 5px;
+}
+
+.language-selector {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.language-selector button {
+    background: #fff;
+    color: #333;
+    border: 2px solid #333;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    border-radius: 5px;
+}
+
+.language-selector button:hover {
+    background: #f5f5f5;
+}
+
+.section {
+    padding: 8rem 2rem 4rem; /* Updated to accommodate fixed header */
+    text-align: center;
+}
+
+.hero-section {
+    background: url('https://catherineasquithgallery.com/uploads/posts/2021-02/1612237269_59-p-fioletovie-foni-stima-68.jpg') no-repeat center center/cover;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    padding: 5rem 2rem;
+    position: relative;
+    text-align: center; /* Center text in hero */
+}
+
+.hero-content {
+    max-width: 100%;
+    z-index: 10;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.hero-image img {
+    max-width: 50%;
+    height: auto;
+    place-items: center;
+    padding: 20px;
+    margin: 20px;
+    justify-content: center;
+    border: 1px solid #90249469;
+    border-radius: 100px;
+}
+
+.features-section, .download-section, .about-section, .contact-section {
+    background: #fff;
+}
+
+.features-section h2, .download-section h2, .about-section h2, .contact-section h2 {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    color: #333;
+}
+
+
+.feature-item {
+    text-align: center;
+    max-width: 300px;
+    margin: 2rem 1rem;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #90249469;
+    border-radius: 10px;
+}
+
+.feature-item img {
+    max-width: 100px;
+    margin-bottom: 1rem;
+    border: 1px solid #90249469;
+    border-radius: 10px;
+}
+
+
+.feature-item:hover {
+    transform: translateY(-10px);
+    transform: scale(1.2); 
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.feature-item .hidden-desc {
+    display: none;
+}
+
+.download-section p, .about-section p {
+    text-align: center;
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+.btn-primary {
+    background: #333333aa;
+    color: #ffffff;
+    border: none;
+    text-align: center;
+    position: relative;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin: 0.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    text-align: center;
+    background: #555;
+}
+
+.btn-secondary {
+    background: #fff;
+    color: #333;
+    text-align: center;
+    border: 2px solid #333;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin: 0.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn-secondary:hover {
+    text-align: center;
+    background: #f5f5f5;
+}
+
+.contact-section form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-section input,
+.contact-section textarea,
+.contact-section button {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    outline: none;
+}
+
+.contact-section button {
+    background: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.contact-section button:hover {
+    background: #555;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background: #333;
+    color: #fff;
+    margin-top: 2rem;
+}
+
+.team-member {
+    background-color: #1c0e740e;
+    place-items: center;
+    display: grid;
+    padding: 20px;
+    margin: 20px;
+    justify-content: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(42, 106, 202, 0.1);
+  }
