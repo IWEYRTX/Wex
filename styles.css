@@ -2,6 +2,7 @@ body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
+    background: url('https://img2.akspic.ru/attachments/crops/0/3/3/3/4/143330/143330-galaktika_andromedy-galaktika-tumannost-purpur-atmosfera-2560x1440.jpg') no-repeat center center/cover; 
     color: #333;
     background-color: #f5f5f5;
 }
@@ -46,7 +47,7 @@ nav {
 }
 
 .nav-links a:hover {
-    background: #555;
+    background: #e2c0c0;
     border-radius: 5px;
 }
 
@@ -120,13 +121,14 @@ nav {
 .features-section h2, .download-section h2, .about-section h2, .contact-section h2 {
     margin-bottom: 2rem;
     font-size: 2.5rem;
-    color: #333;
+    color: #ffffff;
 }
 
 
 .feature-item {
     text-align: center;
     max-width: 300px;
+    color: #ffffff;
     margin: 2rem 1rem;
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -145,7 +147,7 @@ nav {
 .feature-item:hover {
     transform: translateY(-10px);
     transform: scale(1.2); 
-    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 16px rgb(255, 251, 251);
 }
 
 .feature-item .hidden-desc {
@@ -160,7 +162,7 @@ nav {
 }
 
 .btn-primary {
-    background: #333333aa;
+    background: #fffefeaa;
     color: #ffffff;
     border: none;
     text-align: center;
@@ -175,14 +177,14 @@ nav {
 
 .btn-primary:hover {
     text-align: center;
-    background: #555;
+    background: #fff5f5;
 }
 
 .btn-secondary {
     background: #fff;
-    color: #333;
+    color: #fceeee;
     text-align: center;
-    border: 2px solid #333;
+    border: 2px solid #ffffff;
     padding: 0.75rem 1.5rem;
     cursor: pointer;
     transition: background 0.3s;
@@ -214,7 +216,7 @@ nav {
 }
 
 .contact-section button {
-    background: #333;
+    background: #ece1e1;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -222,7 +224,7 @@ nav {
 }
 
 .contact-section button:hover {
-    background: #555;
+    background: #ffebeb;
 }
 
 footer {
