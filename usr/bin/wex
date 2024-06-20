@@ -25,17 +25,17 @@ echo "[INFO]: DESKTOP SESSION = $DESKTOP_SESSION"
 function start_in_wayland() {
   echo "[INFO]: Starting in Wayland session"
   xauth gen $DISPLAY &> /dev/null
-  pkexec 'python /usr/share/Wex/WexQS.py'
+  python /usr/share/Wex/WexQS.py
 }
 
 function start_in_x11() {
   echo "[INFO]: Starting in X11 session"
-  pkexec 'python /usr/share/Wex/WexQS.py'
+  python /usr/share/Wex/WexQS.py
 }
 
 function start_in_tty() {
   echo "[INFO]: Starting in TTY session"
-  pkexec 'python /usr/share/Wex/WexQS.py'
+  python /usr/share/Wex/WexQS.py
 }
 
 case "$SESSION" in
