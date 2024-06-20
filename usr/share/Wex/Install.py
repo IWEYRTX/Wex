@@ -1,7 +1,7 @@
 import os
 import subprocess
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel, QComboBox, QPushButton, QLineEdit, QMessageBox, QFormLayout, QHBoxLayout, QStackedWidget, QWizard, QWizardPage)
-from PyQt6.QtGui import QIcon
+from PyQt6.QtGui import QIcon, QPixmap
 
 class Installer(QWizard):
     def __init__(self):
@@ -16,7 +16,7 @@ class Installer(QWizard):
         self.addPage(self.createTimezonePage())
         self.addPage(self.createSummaryPage())
 
-        self.setWindowIcon(QIcon("assets/icons/preferences-desktop.png"))
+        self.setWindowIcon(QIcon.fromTheme("preferences-desktop"))
 
     def createDiskPage(self):
         page = QWizardPage()
@@ -26,11 +26,15 @@ class Installer(QWizard):
 
         self.disk_combo = QComboBox()
         self.disk_combo.addItems(self.get_disks())
-        layout.addRow(QLabel("Выберите диск для установки:"), self.disk_combo)
+        disk_label = QLabel("Выберите диск для установки:")
+        disk_label.setPixmap(QIcon.fromTheme("drive-harddisk").pixmap(16, 16))
+        layout.addRow(disk_label, self.disk_combo)
 
         self.partition_combo = QComboBox()
         self.partition_combo.addItems(["Автоматическая разметка (весь диск)", "Ручная разметка", "Установить рядом с Windows"])
-        layout.addRow(QLabel("Выберите схему разметки диска:"), self.partition_combo)
+        partition_label = QLabel("Выберите схему разметки диска:")
+        partition_label.setPixmap(QIcon.fromTheme("drive-harddisk").pixmap(16, 16))
+        layout.addRow(partition_label, self.partition_combo)
 
         page.setLayout(layout)
         return page
@@ -43,7 +47,9 @@ class Installer(QWizard):
 
         self.wm_combo = QComboBox()
         self.wm_combo.addItems(["KDE Plasma", "BSPWM", "Hyprland"])
-        layout.addRow(QLabel("Выберите графическую среду:"), self.wm_combo)
+        wm_label = QLabel("Выберите графическую среду:")
+        wm_label.setPixmap(QIcon.fromTheme("preferences-desktop").pixmap(16, 16))
+        layout.addRow(wm_label, self.wm_combo)
 
         page.setLayout(layout)
         return page
@@ -55,15 +61,21 @@ class Installer(QWizard):
         layout = QFormLayout()
 
         self.user_input = QLineEdit()
-        layout.addRow(QLabel("Имя пользователя:"), self.user_input)
+        user_label = QLabel("Имя пользователя:")
+        user_label.setPixmap(QIcon.fromTheme("user").pixmap(16, 16))
+        layout.addRow(user_label, self.user_input)
 
         self.password_input = QLineEdit()
         self.password_input.setEchoMode(QLineEdit.EchoMode.Password)
-        layout.addRow(QLabel("Пароль:"), self.password_input)
+        password_label = QLabel("Пароль:")
+        password_label.setPixmap(QIcon.fromTheme("password").pixmap(16, 16))
+        layout.addRow(password_label, self.password_input)
 
         self.confirm_password_input = QLineEdit()
         self.confirm_password_input.setEchoMode(QLineEdit.EchoMode.Password)
-        layout.addRow(QLabel("Подтвердите пароль:"), self.confirm_password_input)
+        confirm_password_label = QLabel("Подтвердите пароль:")
+        confirm_password_label.setPixmap(QIcon.fromTheme("password").pixmap(16, 16))
+        layout.addRow(confirm_password_label, self.confirm_password_input)
 
         page.setLayout(layout)
         return page
@@ -76,11 +88,15 @@ class Installer(QWizard):
 
         self.timezone_combo = QComboBox()
         self.timezone_combo.addItems(self.get_timezones())
-        layout.addRow(QLabel("Выберите часовой пояс:"), self.timezone_combo)
+        timezone_label = QLabel("Выберите часовой пояс:")
+        timezone_label.setPixmap(QIcon.fromTheme("preferences-system-time").pixmap(16, 16))
+        layout.addRow(timezone_label, self.timezone_combo)
 
         self.language_combo = QComboBox()
         self.language_combo.addItems(["Русский", "English"])
-        layout.addRow(QLabel("Выберите язык:"), self.language_combo)
+        language_label = QLabel("Выберите язык:")
+        language_label.setPixmap(QIcon.fromTheme("preferences-desktop-locale").pixmap(16, 16))
+        layout.addRow(language_label, self.language_combo)
 
         page.setLayout(layout)
         return page
