@@ -1,57 +1,105 @@
 import os
 import subprocess
-from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel, QComboBox, QPushButton, QLineEdit, QMessageBox
+from PyQt6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel, QComboBox, QPushButton, QLineEdit, QMessageBox, QFormLayout, QHBoxLayout, QStackedWidget, QWizard, QWizardPage)
+from PyQt6.QtGui import QIcon
 
-class Installer(QMainWindow):
+class Installer(QWizard):
     def __init__(self):
         super().__init__()
 
         self.setWindowTitle("Wexium Installer")
-        self.setGeometry(100, 100, 400, 400)
+        self.setGeometry(100, 100, 600, 400)
 
-        self.central_widget = QWidget()
-        self.setCentralWidget(self.central_widget)
+        self.addPage(self.createDiskPage())
+        self.addPage(self.createWmPage())
+        self.addPage(self.createUserPage())
+        self.addPage(self.createTimezonePage())
+        self.addPage(self.createSummaryPage())
 
-        self.layout = QVBoxLayout()
-        self.central_widget.setLayout(self.layout)
+        self.setWindowIcon(QIcon("assets/icons/preferences-desktop.png"))
 
-        self.disk_label = QLabel("Выберите диск для установки:")
-        self.layout.addWidget(self.disk_label)
+    def createDiskPage(self):
+        page = QWizardPage()
+        page.setTitle("Выбор диска и разметки")
+
+        layout = QFormLayout()
 
         self.disk_combo = QComboBox()
         self.disk_combo.addItems(self.get_disks())
-        self.layout.addWidget(self.disk_combo)
-
-        self.partition_label = QLabel("Выберите схему разметки диска:")
-        self.layout.addWidget(self.partition_label)
+        layout.addRow(QLabel("Выберите диск для установки:"), self.disk_combo)
 
         self.partition_combo = QComboBox()
         self.partition_combo.addItems(["Автоматическая разметка (весь диск)", "Ручная разметка", "Установить рядом с Windows"])
-        self.layout.addWidget(self.partition_combo)
+        layout.addRow(QLabel("Выберите схему разметки диска:"), self.partition_combo)
 
-        self.wm_label = QLabel("Выберите графическую среду:")
-        self.layout.addWidget(self.wm_label)
+        page.setLayout(layout)
+        return page
+
+    def createWmPage(self):
+        page = QWizardPage()
+        page.setTitle("Выбор графической среды")
+
+        layout = QFormLayout()
 
         self.wm_combo = QComboBox()
         self.wm_combo.addItems(["KDE Plasma", "BSPWM", "Hyprland"])
-        self.layout.addWidget(self.wm_combo)
+        layout.addRow(QLabel("Выберите графическую среду:"), self.wm_combo)
 
-        self.user_label = QLabel("Введите имя пользователя:")
-        self.layout.addWidget(self.user_label)
+        page.setLayout(layout)
+        return page
+
+    def createUserPage(self):
+        page = QWizardPage()
+        page.setTitle("Настройка пользователя")
+
+        layout = QFormLayout()
 
         self.user_input = QLineEdit()
-        self.layout.addWidget(self.user_input)
-
-        self.password_label = QLabel("Введите пароль:")
-        self.layout.addWidget(self.password_label)
+        layout.addRow(QLabel("Имя пользователя:"), self.user_input)
 
         self.password_input = QLineEdit()
         self.password_input.setEchoMode(QLineEdit.EchoMode.Password)
-        self.layout.addWidget(self.password_input)
+        layout.addRow(QLabel("Пароль:"), self.password_input)
+
+        self.confirm_password_input = QLineEdit()
+        self.confirm_password_input.setEchoMode(QLineEdit.EchoMode.Password)
+        layout.addRow(QLabel("Подтвердите пароль:"), self.confirm_password_input)
+
+        page.setLayout(layout)
+        return page
+
+    def createTimezonePage(self):
+        page = QWizardPage()
+        page.setTitle("Выбор часового пояса и языка")
+
+        layout = QFormLayout()
+
+        self.timezone_combo = QComboBox()
+        self.timezone_combo.addItems(self.get_timezones())
+        layout.addRow(QLabel("Выберите часовой пояс:"), self.timezone_combo)
+
+        self.language_combo = QComboBox()
+        self.language_combo.addItems(["Русский", "English"])
+        layout.addRow(QLabel("Выберите язык:"), self.language_combo)
+
+        page.setLayout(layout)
+        return page
+
+    def createSummaryPage(self):
+        page = QWizardPage()
+        page.setTitle("Подтверждение и установка")
+
+        layout = QVBoxLayout()
+
+        self.summary_label = QLabel("Пожалуйста, проверьте все настройки перед установкой.")
+        layout.addWidget(self.summary_label)
 
         self.install_button = QPushButton("Установить")
         self.install_button.clicked.connect(self.install)
-        self.layout.addWidget(self.install_button)
+        layout.addWidget(self.install_button)
+
+        page.setLayout(layout)
+        return page
 
     def run_command(self, command):
         subprocess.run(command, shell=True, check=True)
@@ -69,6 +117,11 @@ class Installer(QMainWindow):
             else:
                 disk_info.append(f"{name} - {size} (Неизвестный формат)")
         return disk_info
+
+    def get_timezones(self):
+        result = subprocess.run(['timedatectl', 'list-timezones'], stdout=subprocess.PIPE)
+        timezones = result.stdout.decode().splitlines()
+        return timezones
 
     def partition_disk(self, disk, scheme):
         disk = disk.split()[0]
@@ -127,18 +180,43 @@ class Installer(QMainWindow):
             if os.path.isfile(full_file_path):
                 self.run_command(f"cp {full_file_path} {home_config_path}")
 
+    def validate_password(self, password):
+        if len(password) < 8:
+            return False, "Пароль должен быть не менее 8 символов"
+        if not any(char.isdigit() for char in password):
+            return False, "Пароль должен содержать хотя бы одну цифру"
+        if not any(char.isupper() for char in password):
+            return False, "Пароль должен содержать хотя бы одну заглавную букву"
+        if not any(char.islower() for char in password):
+            return False, "Пароль должен содержать хотя бы одну строчную букву"
+        return True, ""
+
     def install(self):
         disk = self.disk_combo.currentText()
         partition_scheme = self.partition_combo.currentText()
         wm = self.wm_combo.currentText()
         username = self.user_input.text()
         password = self.password_input.text()
+        confirm_password = self.confirm_password_input.text()
+        timezone = self.timezone_combo.currentText()
+        language = self.language_combo.currentText()
 
         if not username:
             QMessageBox.critical(self, "Ошибка", "Имя пользователя не может быть пустым!")
             return
         if not password:
             QMessageBox.critical(self, "Ошибка", "Пароль не может быть пустым!")
+            return
+        if password != confirm_password:
+            QMessageBox.critical(self, "Ошибка", "Пароли не совпадают!")
+            return
+        valid, message = self.validate_password(password)
+        if not valid:
+            QMessageBox.critical(self, "Ошибка", message)
+            return
+
+        reply = QMessageBox.question(self, "Подтверждение установки", "Вы уверены, что хотите установить систему?", QMessageBox.Yes | QMessageBox.No)
+        if reply == QMessageBox.No:
             return
 
         self.partition_disk(disk, partition_scheme)
@@ -158,6 +236,11 @@ class Installer(QMainWindow):
             self.run_command("arch-chroot /mnt systemctl enable lightdm")
             self.copy_configs('hyprland', username)
 
+        self.run_command(f"arch-chroot /mnt ln -sf /usr/share/zoneinfo/{timezone} /etc/localtime")
+        self.run_command("arch-chroot /mnt hwclock --systohc")
+        self.run_command(f"arch-chroot /mnt locale-gen")
+        self.run_command(f"arch-chroot /mnt localectl set-locale LANG={language}")
+
         QMessageBox.information(self, "Установка завершена", f"{wm} установлена и настроена!")
 
 if __name__ == "__main__":
@@ -165,4 +248,3 @@ if __name__ == "__main__":
     window = Installer()
     window.show()
     app.exec()
-
