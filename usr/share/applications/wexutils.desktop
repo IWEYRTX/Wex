@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=WexQS
+GenericName=Wexutils
+X-GNOME-FullName=wexutils
+Comment=wex
+Exec=/usr/bin/wex
+Icon=wexium
+Terminal=false
+Type=Application
+Categories=GTK;GNOME;Utility;Settings;Security;X-GNOME-Settings-Panel;X-GNOME-SystemSettings;X-Unity-Settings-Panel;X-XFCE-SettingsDialog;X-XFCE-SystemSettings;
+Keywords=wexQs;tool;tweaktool
+StartupNotify=true
