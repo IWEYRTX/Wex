@@ -2,7 +2,6 @@ import os
 import subprocess
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel, QComboBox, QPushButton, QLineEdit, QMessageBox, QFormLayout, QHBoxLayout, QStackedWidget, QWizard, QWizardPage)
 from PyQt6.QtGui import QIcon, QPixmap
-
 class Installer(QWizard):
     def __init__(self):
         super().__init__()

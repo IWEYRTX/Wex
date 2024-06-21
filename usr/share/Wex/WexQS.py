@@ -1,43 +1,45 @@
 import sys
-import webbrowser
-from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QLabel
-from PyQt6.QtCore import QProcess
+import subprocess
+from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel, QPushButton, QMessageBox
 
-class MainWindow(QMainWindow):
+class WexQS(QMainWindow):
     def __init__(self):
         super().__init__()
 
         self.setWindowTitle("WexQS")
-        layout = QVBoxLayout()
+        self.setGeometry(100, 100, 300, 200)
 
-        # Приветственное сообщение
-        self.welcome_label = QLabel("Добро пожаловать в WexQS!\nЗдесь вы можете найти полезные ссылки:")
-        layout.addWidget(self.welcome_label)
+        self.central_widget = QWidget()
+        self.setCentralWidget(self.central_widget)
 
-        # Кнопки для открытия ссылок
-        self.open_issues_button = QPushButton("Баг трекер")
-        self.open_issues_button.clicked.connect(lambda: webbrowser.open("https://github.com/IWEYRTX/Wex/issues"))
-        layout.addWidget(self.open_issues_button)
+        self.layout = QVBoxLayout()
+        self.central_widget.setLayout(self.layout)
 
-        self.open_distribution_button = QPushButton("Wex на GitHub")
-        self.open_distribution_button.clicked.connect(lambda: webbrowser.open("https://github.com/Wexium/"))
-        layout.addWidget(self.open_distribution_button)
+        self.welcome_label = QLabel("Добро пожаловать в WexQS!")
+        self.layout.addWidget(self.welcome_label)
 
-        self.launch_app_button = QPushButton("Запустить WexTweak")
-        self.launch_app_button.clicked.connect(self.launch_app)
-        layout.addWidget(self.launch_app_button)
+        self.tweaker_button = QPushButton("Запустить WexTweaks")
+        self.tweaker_button.clicked.connect(self.run_tweaker)
+        self.layout.addWidget(self.tweaker_button)
 
-        container = QWidget()
-        container.setLayout(layout)
-        self.setCentralWidget(container)
+        self.install_button = QPushButton("Запустить установку системы")
+        self.install_button.clicked.connect(self.run_installer)
+        self.layout.addWidget(self.install_button)
 
-    def launch_app(self):
-        app_name = "WexTweak.py"
-        process = QProcess()
-        process.start(f"pkexec python /usr/share/wex/{app_name}")
+    def run_tweaker(self):
+        try:
+            subprocess.run(['pkexec', 'python3', '/usr/share/Wex/WexTweaks.py'], check=True)
+        except subprocess.CalledProcessError as e:
+            QMessageBox.critical(self, "Ошибка", f"Не удалось запустить WexTweaks: {e}")
 
-if __name__ == '__main__':
+    def run_installer(self):
+        try:
+            subprocess.run(['pkexec', 'python3', '/usr/share/Wex/Install.py'], check=True)
+        except subprocess.CalledProcessError as e:
+            QMessageBox.critical(self, "Ошибка", f"Не удалось запустить установку системы: {e}")
+
+if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = MainWindow()
+    window = WexQS()
     window.show()
     sys.exit(app.exec())
